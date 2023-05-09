@@ -1,0 +1,9 @@
+/* 
+ Contain custom CSS for components
+
+*/
+
+.ant-dropdown-menu {
+    max-height: 220px;
+    overflow: auto;
+}
