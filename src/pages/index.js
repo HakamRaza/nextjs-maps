@@ -14,7 +14,6 @@ import {
 } from 'antd';
 import { connect } from 'react-redux'
 import { resolveActions } from 'next-redux-observable'
-import { loadUsers } from '../redux/actions/userAction'
 
 const data = [
     'Racing car sprays burning fuel into crowd.',
@@ -24,7 +23,7 @@ const data = [
     'Los Angeles battles huge wildfires.',
 ];
 
-const items: MenuProps['items'] = [
+const items = [
     {
         key: '1',
         label: (
@@ -129,13 +128,13 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_API_KEY;
 const Home = ({ list }) => 
 {
     const mapContainer = useRef(null);
-    const map = useRef<any>(null);
-    const [lng, setLng] = useState<number>(101.6841);
-    const [lat, setLat] = useState<number>(3.1319);
-    const [zoom, setZoom] = useState<number>(11.00);
-    const [childrenDrawer, setChildrenDrawer] = useState<boolean>(false);
+    const map = useRef(null);
+    const [lng, setLng] = useState(101.6841);
+    const [lat, setLat] = useState(3.1319);
+    const [zoom, setZoom] = useState(11.00);
+    const [childrenDrawer, setChildrenDrawer] = useState(false);
 
-    const onSearch = (value: string) => console.log(value);
+    const onSearch = (value) => console.log(value);
 
     const showChildrenDrawer = () => {
         setChildrenDrawer(true);

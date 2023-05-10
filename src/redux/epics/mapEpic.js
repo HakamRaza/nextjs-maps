@@ -8,10 +8,6 @@ import {
     loadDetailsSuccess,
     loadDetailsFailure
 } from '../actions/mapAction'
-import {
-    getFeature,
-    searchLocations
-} from '../../api/MapAPI'
 import axios from 'axios'
 
 const MAPBOX_BASE_URL = 'https://api.mapbox.com'
@@ -20,8 +16,8 @@ const MAPBOX_UUID4 = process.env.NEXT_PUBLIC_UUID4;
 
 
 const mapEpics = {
-    search: (action$: any) => action$
-        .pipe(filter((action: { type: string }) => action.type === LIST_MAP_SUGGESTION))
+    search: (action$) => action$
+        .pipe(filter((action) => action.type === LIST_MAP_SUGGESTION))
         .pipe(switchMap(({ payload: { search } }) =>
             from(axios.get(`${MAPBOX_BASE_URL}/search/searchbox/v1/suggest`, {
                 params: {
@@ -37,8 +33,8 @@ const mapEpics = {
         .pipe(map(loadSuggestionsSuccess))
         .pipe(catchError(() => of(loadSuggestionsFailure))),
 
-    detail: (action$: any) => action$
-        .pipe(filter((action: { type: string }) => action.type === LIST_MAP_DETAIL))
+    detail: (action$) => action$
+        .pipe(filter((action) => action.type === LIST_MAP_DETAIL))
         .pipe(switchMap(({ payload: { id } }) =>
             from(axios.get(`${MAPBOX_BASE_URL}search/searchbox/v1/retrieve/${id}`, {
                 params: {

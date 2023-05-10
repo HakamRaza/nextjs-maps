@@ -12,7 +12,7 @@ const reducer = combineReducers({
     maps: mapReducer
 })
 
-export const createAppStore = (initialState: any) => {
+export const createAppStore = (initialState) => {
     const epicMiddleware = createEpicMiddleware()
     const store = createStore(reducer, initialState, applyMiddleware(epicMiddleware));
 

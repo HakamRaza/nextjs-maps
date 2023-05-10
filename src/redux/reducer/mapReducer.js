@@ -4,60 +4,60 @@ import {
     LIST_MAP_DETAIL_SUCCESS,
 } from '../actions/mapAction'
 
-type mapReducerType = {
-    searchString: Array<string>,
-    suggestionList: Array<suggestionResult>,
-    suggestionDetail: featureResult
-}
+// type mapReducerType = {
+//     searchString: Array<string>,
+//     suggestionList: Array<suggestionResult>,
+//     suggestionDetail: featureResult
+// }
 
-type suggestionResult = {
-    name: string,
-    mapbox_id: string,
-    full_address: string,
-}
+// type suggestionResult = {
+//     name: string,
+//     mapbox_id: string,
+//     full_address: string,
+// }
 
-type featureResponse = {
-    geometry: {
-        // formatted as [longitude,latitude].
-        coordinates: Array<number>
-    },
-    properties: {
-        name: string,
-        mapbox_id: string,
-        full_address: string,
-        place_formatted: string,
-        coordinates: {
-            longitude: number
-            latitude: number
-        }
-    }
-}
+// type featureResponse = {
+//     geometry: {
+//         // formatted as [longitude,latitude].
+//         coordinates: Array<number>
+//     },
+//     properties: {
+//         name: string,
+//         mapbox_id: string,
+//         full_address: string,
+//         place_formatted: string,
+//         coordinates: {
+//             longitude: number
+//             latitude: number
+//         }
+//     }
+// }
 
-type featureResult = {
-    // formatted as [longitude,latitude].
-    coordinate_array: Array<number>
-    name: string,
-    full_address: string,
-    longitude: number
-    latitude: number
-}
+// type featureResult = {
+//     // formatted as [longitude,latitude].
+//     coordinate_array: Array<number>
+//     name: string,
+//     full_address: string,
+//     longitude: number
+//     latitude: number
+// }
 
-const initialState: mapReducerType = {
-    searchString: [],
-    suggestionList: [],
-    suggestionDetail: {
-        name: '',
-        full_address: '',
-        coordinate_array: [0, 0],
-        latitude: 0,
-        longitude: 0,
-    }
-}
+// const initialState: mapReducerType = {
+//     searchString: [],
+//     suggestionList: [],
+//     suggestionDetail: {
+//         name: '',
+//         full_address: '',
+//         coordinate_array: [0, 0],
+//         latitude: 0,
+//         longitude: 0,
+//     }
+// }
 
 const mapReducer = (
     state = initialState,
-    action: { type: string, payload: any }
-): mapReducerType => {
+    action
+) => {
     switch (action.type) {
 
         case LIST_MAP_SUGGESTION: {
@@ -66,7 +66,7 @@ const mapReducer = (
         }
 
         case LIST_MAP_SUGGESTION_SUCCESS: {
-            const results: Array<suggestionResult> = []
+            const results = []
 
             for (const suggestion of action.payload) {
 
@@ -80,7 +80,7 @@ const mapReducer = (
         }
 
         case LIST_MAP_DETAIL_SUCCESS: {
-            const features: Array<featureResponse> = action.payload;
+            const features = action.payload;
 
             if (features.length > 1) {
                 return {
