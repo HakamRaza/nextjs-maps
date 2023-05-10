@@ -42,17 +42,17 @@ import {
 //     latitude: number
 // }
 
-// const initialState: mapReducerType = {
-//     searchString: [],
-//     suggestionList: [],
-//     suggestionDetail: {
-//         name: '',
-//         full_address: '',
-//         coordinate_array: [0, 0],
-//         latitude: 0,
-//         longitude: 0,
-//     }
-// }
+const initialState = {
+    searchString: [],
+    suggestionList: [],
+    suggestionDetail: {
+        name: '',
+        full_address: '',
+        coordinate_array: [0, 0],
+        latitude: 0,
+        longitude: 0,
+    }
+}
 
 const mapReducer = (
     state = initialState,
