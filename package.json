@@ -25,6 +25,9 @@
     "redux-observable": "^1.2.0",
     "rxjs": "^6.5.4"
   },
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
+  },
   "browserslist": [
     "defaults",
     "not ie 11"
